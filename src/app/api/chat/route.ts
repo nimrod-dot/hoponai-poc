@@ -158,7 +158,7 @@ export async function POST(req: NextRequest) {
 
     if (toolCalls && toolCalls.length > 0) {
       for (const toolCall of toolCalls) {
-        if (toolCall.function.name === 'build_workflow') {
+        if (toolCall.type === 'function' && toolCall.function.name === 'build_workflow') {
           const args = JSON.parse(toolCall.function.arguments);
           boardName = args.board_name;
           items = args.items;
