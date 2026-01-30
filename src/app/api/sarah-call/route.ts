@@ -282,7 +282,7 @@ export async function POST(req: NextRequest) {
     if (toolCalls && toolCalls.length > 0) {
       for (const toolCall of toolCalls) {
         
-        if (toolCall.function.name === 'share_screen') {
+        if (toolCall.type === 'function' && toolCall.function?.name === 'share_screen') {
           action = 'SHARE_SCREEN';
           
           const followUp = await openai.chat.completions.create({
@@ -331,7 +331,7 @@ export async function POST(req: NextRequest) {
           }
         }
         
-        if (toolCall.function.name === 'create_workflow') {
+        if (toolCall.type === 'function' && toolCall.function?.name === 'create_workflow') {
           const args = JSON.parse(toolCall.function.arguments);
           cards = args.cards;
           
@@ -355,7 +355,7 @@ export async function POST(req: NextRequest) {
           reply = followUp.choices[0].message.content || 'There you go! Your workflow is ready.';
         }
         
-        if (toolCall.function.name === 'add_feature') {
+        if (toolCall.type === 'function' && toolCall.function?.name === 'add_feature') {
           const args = JSON.parse(toolCall.function.arguments);
           feature = { type: args.feature_type, name: args.feature_name };
           action = 'ADD_FEATURE';
@@ -375,7 +375,7 @@ export async function POST(req: NextRequest) {
           reply = followUp.choices[0].message.content || 'Done! I just added that for you.';
         }
         
-        if (toolCall.function.name === 'show_pricing') {
+        if (toolCall.type === 'function' && toolCall.function?.name === 'show_pricing') {
           const args = JSON.parse(toolCall.function.arguments);
           pricing = { plan: args.recommended_plan };
           action = 'SHOW_PRICING';
