@@ -144,7 +144,7 @@ export async function POST(req: NextRequest) {
 
     if (toolCalls && toolCalls.length > 0) {
       for (const toolCall of toolCalls) {
-        if (toolCall.function.name === 'create_item') {
+        if (toolCall.type === 'function' && toolCall.function.name === 'create_item') {
           const args = JSON.parse(toolCall.function.arguments);
           await createMondayItem(args.item_name, args.status);
           
