@@ -65,7 +65,6 @@ async function clearBoard() {
       }
     }
   }`;
-
   const getRes = await fetch('https://api.monday.com/v2', {
     method: 'POST',
     headers: {
