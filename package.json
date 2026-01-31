@@ -14,7 +14,7 @@
     "openai": "^6.16.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "simli-client": "^2.0.0"
+    "simli-client": "^1.2.20"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.3",
