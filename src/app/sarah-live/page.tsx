@@ -106,7 +106,7 @@ export default function SarahLivePage() {
         maxIdleTime: 600,
         videoRef: videoRef.current,
         audioRef: audioRef.current,
-      });
+      } as any);
       
       simliClient.on('connected', () => {
         console.log('Simli connected!');
