@@ -306,7 +306,7 @@ export async function POST(req: NextRequest) {
           // Handle nested tool call for create_workflow
           if (followUpChoice.message.tool_calls) {
             for (const nestedCall of followUpChoice.message.tool_calls) {
-              if (nestedCall.function.name === 'create_workflow') {
+              if (nestedCall.type === 'function' && nestedCall.function.name === 'create_workflow') {
                 const args = JSON.parse(nestedCall.function.arguments);
                 cards = args.cards;
                 
