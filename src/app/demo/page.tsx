@@ -112,7 +112,7 @@ const Checkbox = ({ checked = false }: { checked?: boolean }) => (
 );
 
 // Monday Board Component
-export function MondayBoard({ 
+function MondayBoard({ 
   boardName, 
   items, 
   isCreating,
