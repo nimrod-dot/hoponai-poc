@@ -393,7 +393,7 @@ function MondayBoard({
   );
 }
 
-export default function DemoPage() {
+function DemoPageContent() {
   const searchParams = useSearchParams();
   const token = searchParams.get('token');
   
@@ -602,5 +602,13 @@ export default function DemoPage() {
         />
       </div>
     </div>
+  );
+}
+
+export default function DemoPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <DemoPageContent />
+    </Suspense>
   );
 }
